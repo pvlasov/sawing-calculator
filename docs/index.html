@@ -92,14 +92,14 @@
 				          label-align-sm="right"
 				          label-size="sm"
 				          class="mb-0"
-						  description="Угол между досками"	          
+						  description="Угол подъёма"	          
 				        >
 				          <b-input-group size="sm">
 				            <b-form-input
 				              id="alpha-input"
 				              v-model="alpha"
 				              type="number"
-				              placeholder="Угол между досками"
+				              placeholder="Угол подъёма"
 				            ></b-form-input>
 				          </b-input-group>
 				        </b-form-group>		
@@ -165,18 +165,18 @@
 			new Vue({
 				  el: '#calculator-app',
 				  data: {
-					  x: 1,
-					  y: 1,
-					  alpha: 90
+					  x: 2.5,
+					  y: 3.5,
+					  alpha: 30
 				  },				  
 				  computed: {
 					  beta: function() {
-						  let arad = this.alpha * Math.PI / 180;
+						  let arad = (90.0 + parseInt(this.alpha)) * Math.PI / 180;
 						  let result = Math.atan(Math.sin(arad)/(this.y/this.x + Math.cos(arad)))*180/Math.PI;
 						  return Math.round(result * 100) / 100;
 					  },
 					  gamma: function() {
-						  let result = this.alpha - this.beta;
+						  let result = this.alpha - this.beta + 90;
 						  return Math.round(result * 100) / 100;
 					  }
 				  }
