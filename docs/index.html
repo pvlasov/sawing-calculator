@@ -154,6 +154,30 @@
 				        </b-form-group>		
 	     			</div>     		
 	     		</div>
+	     		<div class="row">
+	     			<div class="col">
+						<b-form-group
+				          label="δ"
+				          label-for="delta"
+				          label-cols-sm="1"
+				          label-align-sm="right"
+				          label-size="sm"
+				          class="mb-0"
+						  description="Угол поворота пилы: 90 - γ"	          
+				        >
+				          <b-input-group size="sm">
+				            <b-form-input
+				              id="delta-output"
+				              v-model="delta"
+				              type="number"
+				              readonly="true"
+				              placeholder="Угол поворота пилы: 90 - γ"
+				            ></b-form-input>
+				          </b-input-group>
+				        </b-form-group>		
+	     			</div>     		
+	     		</div>	     		
+	     		
      		</fieldset>
 	        
 	        <div class="row">
@@ -177,6 +201,10 @@
 					  },
 					  gamma: function() {
 						  let result = this.alpha - this.beta + 90;
+						  return Math.round(result * 100) / 100;
+					  },
+					  delta: function() {
+						  let result = 90 - this.gamma;
 						  return Math.round(result * 100) / 100;
 					  }
 				  }
